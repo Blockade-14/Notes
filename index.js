@@ -34,7 +34,7 @@ function addNote() {
 
     console.log(text);
 
-    notes.push({text:text, date: new Date().toUTCString()});
+    notes.push({text:text, date: new Date().toLocaleString()});
     
     saveNotes();
     displayNotes();
@@ -46,7 +46,8 @@ function editNote(e) {
 
     var text = prompt("Add note:", note.text);
 
-    if(!text) return alert("Do you want to delete this note?\nUse the delete button, please!");
+    if(text === "") alert("Do you want to delete this note?\nUse the delete button, please!");
+    if(!text) return;
 
     note.text = text;
 

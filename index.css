@@ -27,24 +27,20 @@ body *{
     font-weight: bold;
 }
 
-.clear-b{
+.header-b{
     flex: none;
-    width: 30%;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255 255 255);
-    border: 0.05em solid #eb5858;
-}
-
-.add-b{
-    flex: none;
-    width: 30%;
-    height: 50%;
+    padding: 1em;
     justify-content: center;
     align-items: center;
     margin-right: 0.5em;
     background-color: rgb(255 255 255);
+}
+
+.clear-b{
+    border: 0.05em solid #eb5858;
+}
+
+.add-b{
     border: 0.05em solid rgb(182, 181, 181);
 }
 
@@ -63,8 +59,9 @@ body *{
 }
 
 .note-buttons{
-    width: 5%;
-    height: 5%;
+    border: none;
+    background: none;
+    padding: 0 0.5em;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -102,9 +99,5 @@ body *{
 .text{
     font-size: 1.2em;
     color: #5a5959;
-}
-
-.buttons > *{
-    border: none;
-    background: none;
+    padding: 0.5em 0;
 }
