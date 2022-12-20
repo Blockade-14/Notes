@@ -17,7 +17,7 @@ document.getElementById("delete").addEventListener("click", deleteAllNotes);
 
 function deleteAllNotes() {
 
-    if(!confirm("Do you want to delete all notes:")) return;
+    if(!confirm("Do you want to delete all notes?")) return;
 
     notes = [];
 
@@ -34,7 +34,9 @@ function addNote() {
 
     console.log(text);
 
-    notes.push({text:text, date: new Date().toLocaleString()});
+    notes.push({text:text, date: new Date().toLocaleString(
+
+    )});
     
     saveNotes();
     displayNotes();
@@ -67,6 +69,14 @@ function clearNote(e) {
 }
 
 function displayNotes() {
+
+    var message = document.querySelector(".message");
+    if(notes.length > 0){
+        message.style.display = "none";
+    }else{
+        message.style.display = "flex";
+    }
+
     var container = document.getElementById("notesList");
     container.innerHTML = "";
 
