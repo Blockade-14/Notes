@@ -74,7 +74,7 @@ function displayNotes() {
     if(notes.length > 0){
         message.style.display = "none";
     }else{
-        message.style.display = "flex";
+        message.style.display = "block";
     }
 
     var container = document.getElementById("notesList");
