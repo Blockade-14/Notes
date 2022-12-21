@@ -39,11 +39,13 @@ body *{
 }
 
 .clear-b{
-    border: 0.05em solid #eb5858;
+    border: 0.05em solid #dddada;
 }
 
 .add-b{
     border: 0.05em solid rgb(182, 181, 181);
+    background-color: #47a94a;
+    color: white;
 }
 
 .end{
