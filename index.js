@@ -7,11 +7,11 @@ function readNotes(){
     }else{
         notes = [];
     }
-}
+};
 
 function saveNotes(){
     localStorage.setItem("notes", JSON.stringify(notes));   
-}
+};
 
 document.getElementById("delete").addEventListener("click", deleteAllNotes);
 
@@ -23,26 +23,54 @@ function deleteAllNotes() {
 
     saveNotes();
     displayNotes();
-}
+};
 
-document.getElementById("add").addEventListener("click", addNote);
+document.getElementById("add").addEventListener("click", showDialog);
 
 function addNote() {
-    var text = prompt("Add note:");
 
-    if(!text) return;
-
-    console.log(text);
-
-    notes.push({text:text, date: new Date().toLocaleString(
-
-    )});
+    notes.push({text:text, date: new Date().toLocaleString()});
     
     saveNotes();
     displayNotes();
-}
+};
 
-function editNote(e) {
+function showDialog(){
+    var dialog = document.getElementById("dialog");
+    dialog.style.display = "block";
+};
+
+document.getElementById("close").addEventListener("click", hideDialog);
+
+function hideDialog(){
+
+    if(!confirm("Do you want to close the window?")) return;
+
+    var textarea = document.getElementById("myTextarea");
+    textarea.value = "";
+
+    var dialog = document.getElementById("dialog");
+    dialog.style.display = "none"; 
+};
+
+document.getElementById("save").addEventListener("click", saveDialog);
+
+function saveDialog(){
+
+    var textarea = document.getElementById("myTextarea");
+
+    notes.push({text:textarea.value, date: new Date().toLocaleString()});
+
+    console.log(notes.toString());
+    
+    dialog.style.display = "none"; 
+    textarea.value = "";
+
+    saveNotes();
+    displayNotes();
+};
+
+function editNote(e){
 
     var note = this.note;
 

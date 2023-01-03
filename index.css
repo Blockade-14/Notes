@@ -129,3 +129,59 @@ body *{
 .display-block{
     display: block;
 }
+
+.display-none{
+    display: none;
+}
+
+.addNote-box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.301);
+    height: 100%;
+    width: 100%;
+}
+
+.addNote-box .addNote{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 2;
+    max-width: 400px;
+    width: 100%;
+}
+
+.addNote{
+    background: #fff;
+}
+
+.button-x{
+    border: none;
+    background: white;
+    font-size: 1em;
+}
+
+.padding{
+    padding: 0 1em;
+}
+
+.textarea{
+    height: 10em;
+}
+
+.saveNote{
+    padding: 1em;
+    justify-content: end;
+}
+
+.saveNote-b{
+    text-align: center;
+    background: #48af48;
+    justify-content: center;
+    padding: 1em;
+    flex: none;
+    border: none;
+    color: white;
+}
