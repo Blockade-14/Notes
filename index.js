@@ -1,4 +1,5 @@
 var notes = [];
+var selectedNote = null;
 
 function readNotes(){
     var storage = localStorage.getItem("notes");
@@ -35,7 +36,7 @@ function addNote() {
     displayNotes();
 };
 
-function showDialog(){
+function showDialog(note){
     var dialog = document.getElementById("dialog");
     dialog.style.display = "block";
 };
@@ -70,20 +71,34 @@ function saveDialog(){
     displayNotes();
 };
 
+document.getElementById("save").addEventListener("click", updateDialog());
+
+function updateDialog(){
+
+    
+   
+}; 
+
 function editNote(e){
+    
+    selectedNote = this.note;
+    document.getElementById("myTextarea").value = this.note.text;
 
-    var note = this.note;
+    showDialog();
+    
 
-    var text = prompt("Add note:", note.text);
+    // var note = this.note;
 
-    if(text === "") alert("Do you want to delete this note?\nUse the delete button, please!");
-    if(!text) return;
+    // var text = prompt("Add note:", note.text);
 
-    note.text = text;
+    // if(text === "") alert("Do you want to delete this note?\nUse the delete button, please!");
+    // if(!text) return;
 
-    saveNotes();
-    displayNotes();
-}
+    // note.text = text;
+
+    // saveNotes();
+    // displayNotes();
+};
 
 function clearNote(e) { 
 
@@ -94,7 +109,7 @@ function clearNote(e) {
     
     saveNotes();
     displayNotes();
-}
+};
 
 function displayNotes() {
 
