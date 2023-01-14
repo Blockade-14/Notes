@@ -41,11 +41,16 @@ function showDialog(note){
     dialog.style.display = "block";
 };
 
-document.getElementById("close").addEventListener("click", hideDialog);
+document.getElementById("close").addEventListener("click", function(){
+
+    var yes = confirm("Close without saving?");
+
+    if( yes ) hideDialog();
+});
 
 function hideDialog(){
 
-    if(!confirm("Do you want to close the window?")) return;
+    selectedNote = null;
 
     var textarea = document.getElementById("myTextarea");
     textarea.value = "";
@@ -59,50 +64,42 @@ document.getElementById("save").addEventListener("click", saveDialog);
 function saveDialog(){
 
     var textarea = document.getElementById("myTextarea");
+    var text = textarea.value.replaceAll( "\n", "<br>" );
 
-    notes.push({text:textarea.value, date: new Date().toLocaleString()});
+    if( selectedNote ){
 
-    console.log(notes.toString());
-    
-    dialog.style.display = "none"; 
-    textarea.value = "";
+        if( selectedNote.text !== text ){
 
+            var yes = confirm("Do you want to update?");
+
+            if( !yes ) return;
+        }
+        selectedNote.text = text;
+    }
+    else{
+        notes.push( { text: text, date: new Date().toLocaleString() });
+    }
+
+    hideDialog();
     saveNotes();
     displayNotes();
 };
 
-document.getElementById("save").addEventListener("click", updateDialog());
-
-function updateDialog(){
-
-    
-   
-}; 
-
 function editNote(e){
     
     selectedNote = this.note;
-    document.getElementById("myTextarea").value = this.note.text;
+    document.getElementById("myTextarea").value = this.note.text.replaceAll( "<br>", "\n" );
 
     showDialog();
-    
-
-    // var note = this.note;
-
-    // var text = prompt("Add note:", note.text);
-
-    // if(text === "") alert("Do you want to delete this note?\nUse the delete button, please!");
-    // if(!text) return;
-
-    // note.text = text;
-
-    // saveNotes();
-    // displayNotes();
 };
 
 function clearNote(e) { 
 
-    if(!confirm("Do you want to delete the note with text: " + this.note.text)) return;
+    var text = this.note.text.replaceAll( "<br>", "\n" );
+
+    if( text.length > 50 ) text = text.substring(0, 50) + "...";
+
+    if(!confirm("Do you want to delete the note with text: " + text )) return;
 
     var index = notes.indexOf(this.note);
     notes.splice(index, 1);
