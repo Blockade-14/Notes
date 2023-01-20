@@ -141,6 +141,7 @@ body *{
     background-color: rgba(0, 0, 0, 0.301);
     height: 100%;
     width: 100%;
+    z-index: 999;
 }
 
 .addNote-box .addNote{
@@ -148,7 +149,7 @@ body *{
     top: 20%;
     left: 50%;
     transform: translate(-50%);
-    z-index: 2;
+    z-index: 999;
     max-width: 400px;
     width: 100%;
 }
